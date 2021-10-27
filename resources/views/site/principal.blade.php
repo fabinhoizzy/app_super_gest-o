@@ -32,34 +32,9 @@
             <h1>Contato</h1>
             <p>Caso tenha qualquer dúvida por favor entre em contato com nossa equipe pelo formulário abaixo.
             <p>
-            <form>
-                <label>
-                    <input type="text" placeholder="Nome" class="borda-branca" alt="nome">
-                </label>
-                <br>
-                <label>
-                    <input type="text" placeholder="Telefone" class="borda-branca" alt="telefone">
-                </label>
-                <br>
-                <label>
-                    <input type="text" placeholder="E-mail" class="borda-branca" alt="email">
-                </label>
-                <br>
-                <label>
-                    <select class="borda-branca">
-                        <option value="">Qual o motivo do contato?</option>
-                        <option value="">Dúvida</option>
-                        <option value="">Elogio</option>
-                        <option value="">Reclamação</option>
-                    </select>
-                </label>
-                <br>
-                <label>
-                    <textarea class="borda-branca">Preencha aqui a sua mensagem</textarea>
-                </label>
-                <br>
-                <button type="submit" class="borda-branca">ENVIAR</button>
-            </form>
+            @component('site.layouts._components.form_contato', ['classe' => 'borda-branca'])
+
+            @endcomponent
         </div>
     </div>
 </div>
