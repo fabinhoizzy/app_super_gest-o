@@ -16,14 +16,29 @@ class ContatoController extends Controller
     }
 
     public function salvar(Request $request) {
-        //SiteContato::create($request->all());
-        $request->validate([
-            'nome' => 'required|min:3|max:40',
+
+        $regras = [
+            'nome' => 'required|min:3|max:40|unique:site_contatos',
             'telefone' => 'required',
-            'email' => 'required',
-            'motivo_contato' => 'required',
+            'email' => 'email',
+            'motivo_contatos_id' => 'required',
             'mensagem' => 'required|max:2000'
-        ]);
+        ];
+        $feedback =  [
+            'nome.min' => 'O campo nome precisa ter no minimo 3 caracteres',
+            'nome.max' => 'O campo nome deve ter no maximo 40 caracteres',
+            'nome.unique' => 'nome usado já está em uso',
+
+            'email.email' => 'o email informado não é valido',
+
+            'mensagem.max' => 'A mensagem deve ter no maximo 200 caracteres',
+            'required' => 'o campo :attribute deve ser preenchido'
+        ];
+
+        $request->validate($regras, $feedback);
+
+        SiteContato::create($request->all());
+        return redirect()->route('site.index');
     }
 
 }
