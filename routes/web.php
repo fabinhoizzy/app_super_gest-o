@@ -41,7 +41,8 @@ Route::middleware( 'autenticacao:padrao')->prefix('/app')->group(function (){
     Route::get('/fornecedor/adicionar', 'FornecedorController@adicionar')->name('app.fornecedor.adicionar');
     Route::post('/fornecedor/adicionar', 'FornecedorController@adicionar')->name('app.fornecedor.adicionar');
 
-    Route::get('/produto', 'ProdutoController@index')->name('app.produto');
+    //Produtos
+    Route::resource('produto', 'ProdutoController');
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('site.teste');
