@@ -70,7 +70,7 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        return view('app.produto.show', ['produto' => $produto]);
     }
 
     /**
@@ -81,7 +81,9 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        //
+        $unidades = Unidade::all();
+        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
+        //return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades]);
     }
 
     /**
@@ -93,7 +95,11 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        //$request->all(); //payload
+        //$produto //instância do objeto no estado anterior
+
+        $produto->update($request->all());
+        return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
 
     /**
@@ -104,6 +110,7 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        //
+        $produto->delete();
+        return redirect()->route('produto.index');
     }
 }
