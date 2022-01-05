@@ -6,6 +6,7 @@
             <form method="post" action="{{ route('produto-detalhe.store') }}">
                 @csrf
                 @endif
+
                 <input type="text" name="produto_id" value="{{ $produto_detalhe->id ?? old('produto_id') }}" placeholder="ID do Produto"
                        class="borda-preta"/>
                 {{ $errors->has('produto_id') ? $errors->first('produto_id') : '' }}
