@@ -62,6 +62,18 @@
                 </table>
 
                 {{ $produtos->appends($request)->links() }}
+                <!--
+                <br>
+                {{ $produtos->count() }} - Total de registros por página
+                <br>
+                {{ $produtos->total() }} - Total de registros da consulta
+                <br>
+                {{ $produtos->firstItem() }} - Numero do primeiro registro da página
+                <br>
+                {{ $produtos->lastItem() }} - Numero do último registro da página
+                -->
+                <br>
+                Exibindo {{ $produtos->count() }} produtos de  {{ $produtos->total() }} (de {{ $produtos->firstItem() }} a {{ $produtos->lastItem() }})
 
             </div>
         </div>
